@@ -38,7 +38,15 @@ html, body {
     fill-opacity: 0.6; /* 60% opacity */
     stroke: white;
     stroke-width: 1;
-    pointer-events: auto
+    pointer-events: auto;
+    --color-departures: steelblue;
+    --color-arrivals: darkorange;
+    --color: color-mix(
+    in oklch,
+    var(--color-departures) calc(100% * var(--departure-ratio)),
+    var(--color-arrivals)
+    );
+    fill: var(--color);
 }
 
 header {
@@ -56,4 +64,29 @@ header em {
     color: #888; /* Lighter color */
     font-style: italic;
 }
+
+.legend > div {
+    --color-departures: steelblue;
+    --color-arrivals: darkorange;
+    --color: color-mix(
+    in oklch,
+    var(--color-departures) calc(100% * var(--departure-ratio)),
+    var(--color-arrivals)
+    );
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    background: var(--color);
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+.legend {
+    display: flex;         /* Enables flexbox */
+    gap: 1rem;            /* Adds spacing between items */
+    align-items: center;  /* Centers items vertically */
+    justify-content: center; /* Centers items horizontally */
+    margin-block: 1rem;
+}
+
 
